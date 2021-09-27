@@ -3,20 +3,30 @@ var timerEl = document.getElementById('countdown');
 // var StartBtn = document.getElementById("StartBtn");
 // var results = document.getElementById("results");
 // var questions = myQuiz();
-const StartBtn = document.querySelector(".StartBtn button");
-const quiz_box = document.querySelector(".quiz-box");
-const results = document.querySelector(".results");
-const options = document.querySelector(".options");
+var StartBtn = document.querySelector("#StartBtn");
+var results = document.querySelector(".results");
+var options = document.querySelector(".options");
+var quesNum = 0;
+var questionsDiv = document.querySelector(".questions");
+var quiz_box = document.querySelector(".quiz_box");
+
+function showQuestions() {
+    console.log("showQuestions is working")
+}
+
+
 // const countdown = document.querySelector("#countdown");
 
+// StartBtn.addEventListener("click", function(event) {
 
+// });
 
 // let questions = 0;
 // let number = 1;
 // let userScore = 0;
 
-const restart = results.querySelector (".buttons .restart");
-const quit = results.querySelector(".buttons .quit");
+var restart = results.querySelector (".buttons .restart");
+var quit = results.querySelector(".buttons .quit");
 
 restart.addEventListener("click", function(event) {
     quiz_box.classList.add("activeQuiz");
@@ -24,7 +34,7 @@ restart.addEventListener("click", function(event) {
     userScore = 0;
     widthValue = 0;
     showQuestions(questions);
-    QCounter(number);
+    // QCounter(number);
     console.log("restartBtn");
 });
 console.log("restartBtn");
@@ -34,11 +44,11 @@ quit.addEventListener("click", function(){
     window.location.reload();
 });
 
-// StartBtn.addEventListener("click", function(event){
+// StartBtn.addEventListener("click", function(event) {
 //     function startTimer(countdown)
 // });
 
-
+//countdown function for the timer
 function countdown() {
     var timeLeft = 75;
 
@@ -47,7 +57,7 @@ function countdown() {
             timerEl.textContent = timeLeft + "seconds remaining";
             timeLeft--;
         } else if (timeLeft === 1) {
-            timerEl.textContent = timeLeft = "second remaining";
+            timerEl.textContent = timeLeft + "second remaining";
             timeLeft--;
         } else {
             timerEl.textContent = "";
@@ -57,6 +67,9 @@ function countdown() {
     }, 1000);
 }
 
+
+
+//questions list array
 let questions = [
     {
         num: 1, 
@@ -85,6 +98,23 @@ let questions = [
 
 
 
+//set up a function for the start button
+StartBtn.addEventListener("click", function(event){
+    console.log(event);
+    countdown();
+}) 
+    
+
+
+
+//for loof for the options of a question
+for (let i = 0; i < options.length; i++) {
+    var choices = document.createElement("button");
+    choices.setAttribute("type", "button");
+}
+
+
+
 
 
 
@@ -108,4 +138,4 @@ let questions = [
 //     },
 // ];
 
-countdown();
+// countdown();
