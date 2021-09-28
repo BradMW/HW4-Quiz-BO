@@ -107,8 +107,14 @@ StartBtn.addEventListener("click", function(event){
 
 
 
-//for loof for the options of a question
+//for loop for the options of a question
 for (let i = 0; i < options.length; i++) {
+    options = [];
+        for(letter in questions[i].options){
+            questions.push(
+         
+            );
+        }
     var choices = document.createElement("button");
     choices.setAttribute("type", "button");
 }
