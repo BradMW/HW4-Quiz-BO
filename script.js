@@ -9,6 +9,9 @@ var options = document.querySelector(".options");
 var quesNum = 0;
 var questionsDiv = document.querySelector(".questions");
 var quiz_box = document.querySelector(".quiz_box");
+var feedbackMsg = document.querySelector(".feedback");
+var numCorrect = 0;
+
 
 function showQuestions() {
     console.log("showQuestions is working")
@@ -76,7 +79,7 @@ let questions = [
         question: "what is 9 + 10",
         answer: "21",
         options: [
-            "20",
+            "21",
             "18",
             "19"
         ]
@@ -91,33 +94,126 @@ let questions = [
             "everyone"
         ]
     },
+    {
+        num: 1, 
+        question: "what is 9 + 10",
+        answer: "21",
+        options: [
+            "21",
+            "18",
+            "19"
+        ]
+    },
+    {
+    num: 2, 
+        question: "who is awesome",
+        answer: "you",
+        options: [
+            "idk",
+            "you",
+            "everyone"
+        ]
+    },
+    {
+        num: 2, 
+            question: "who is awesome",
+            answer: "you",
+            options: [
+                "idk",
+                "you",
+                "everyone"
+            ]
+        },
 ]
 
 
+function questionRender() {
+    var question = document.createElement("p")
+    question.textContent = questions[quesNum].question;
+    questionsDiv.appendChild(question);
+    for (let i = 0; i < questions[quesNum].options.length; i++) {
+
+        // options = [];
+        //    for(letter in questions[i].options){
+        //        questions.push(    
+        //        );
+        //    }
 
 
 
+
+        var choices = document.createElement("button");
+        choices.setAttribute("type", "button");
+        choices.innerHTML = questions[quesNum].options[i];
+
+        // var userChoice = choices.innerHTML;
+
+
+        // choices.onclick = evaluateAnswer();
+        options.appendChild(choices);
+        choices.addEventListener("click", function(){
+
+            console.log(this.textContent);
+           
+            
+        // if else statement to check whether answer is correct
+        console.log(questions[quesNum].answer);
+                if (questions[quesNum].answer == this.textContent) {
+                feedbackMsg.textContent = "You got it right!"
+                 
+                    
+
+                 numCorrect++;
+                } else if(this) {
+                    
+                    feedbackMsg.textContent = "wrong answer"
+                }
+                quesNum += 1;
+                options.textContent = "";
+                question.textContent = "";
+                questionRender()
+
+        })
+       
+    }
+   
+}
+
+function evaluateAnswer() {
+//     console.log(this.textContent);
+//     quesNum += 1;
+//     options.textContent = "";
+//     question.textContent = "";
+//     var numCorrect = 0;
+// // if else statement to check whether answer is correct
+//         if (this.options = 21) {
+         
+//          numCorrect++;
+//         } else if(this) {
+            
+//             textContent = "wrong answer"
+//         }
+//         questionRender()
+    // then do things based on that
+    //check to see if quesnum is greater than the number of questions
+
+    // if the game is not over run questionRender()
+    
+    // if it is run some end game function to be determined
+}
 
 //set up a function for the start button
 StartBtn.addEventListener("click", function(event){
     console.log(event);
     countdown();
+    questionRender()
+    // run a function that renders the questions
 }) 
     
 
 
 
 //for loop for the options of a question
-for (let i = 0; i < options.length; i++) {
-    options = [];
-        for(letter in questions[i].options){
-            questions.push(
-         
-            );
-        }
-    var choices = document.createElement("button");
-    choices.setAttribute("type", "button");
-}
 
 
 
