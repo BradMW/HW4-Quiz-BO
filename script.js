@@ -11,7 +11,10 @@ var questionsDiv = document.querySelector(".questions");
 var quiz_box = document.querySelector(".quiz_box");
 var feedbackMsg = document.querySelector(".feedback");
 var numCorrect = 0;
+var length = 4;
+var score = document.getElementById(".points");
 
+// let numCorrect = document.getElementById(".points");
 
 function showQuestions() {
     console.log("showQuestions is working")
@@ -76,52 +79,52 @@ function countdown() {
 let questions = [
     {
         num: 1, 
-        question: "what is 9 + 10",
-        answer: "21",
+        question: "At what weight must drones be registered?",
+        answer: ".55-55lbs",
         options: [
-            "21",
-            "18",
-            "19"
+            ".55-55lbs",
+            "1-100lbs",
+            "over 5lbs"
         ]
     },
     {
     num: 2, 
-        question: "who is awesome",
-        answer: "you",
+        question: "How old do you need to be to register?",
+        answer: "13",
         options: [
-            "idk",
-            "you",
-            "everyone"
-        ]
-    },
-    {
-        num: 1, 
-        question: "what is 9 + 10",
-        answer: "21",
-        options: [
+            "13",
             "21",
-            "18",
-            "19"
+            "18"
         ]
     },
     {
-    num: 2, 
-        question: "who is awesome",
-        answer: "you",
+        num: 3, 
+        question: "What is the legal top speed of a drone?",
+        answer: "100mph",
         options: [
-            "idk",
-            "you",
-            "everyone"
+            "60mph",
+            "25mph",
+            "100mph"
         ]
     },
     {
-        num: 2, 
-            question: "who is awesome",
-            answer: "you",
+    num: 4, 
+        question: "What is +TSRA BR?",
+        answer: "Weather",
+        options: [
+            "Distance",
+            "Weather",
+            "Serial Number"
+        ]
+    },
+    {
+        num: 5, 
+            question: "SM in 3/4SM stands for?",
+            answer: "Statute Miles",
             options: [
-                "idk",
-                "you",
-                "everyone"
+                "Standard Meters",
+                "Square Miles",
+                "Statute Miles"
             ]
         },
 ]
@@ -155,18 +158,21 @@ function questionRender() {
 
             console.log(this.textContent);
            
-            
+            // console.log(score[userScore]);
         // if else statement to check whether answer is correct
         console.log(questions[quesNum].answer);
                 if (questions[quesNum].answer == this.textContent) {
-                feedbackMsg.textContent = "You got it right!"
-                 
+                feedbackMsg.textContent = "You got it right!"; 
+                feedbackMsg.style.backgroundColor = "#6CCED9";
                     
 
                  numCorrect++;
                 } else if(this) {
                     
                     feedbackMsg.textContent = "wrong answer"
+                    feedbackMsg.style.backgroundColor = "#F26D3D";
+                } else {
+
                 }
                 quesNum += 1;
                 options.textContent = "";
@@ -207,6 +213,8 @@ StartBtn.addEventListener("click", function(event){
     console.log(event);
     countdown();
     questionRender()
+    // StartBtn.onclick(style.display = "none")
+ 
     // run a function that renders the questions
 }) 
     

@@ -8,11 +8,12 @@
 :root {
     --main: #192E41;
     --text: #BBC8DE;
-    --link: #0D659D;
+    --link: #0d8ad8;
+    --reg: #fff;
 }
 
 body {
-    background-color: rgb(7, 65, 7);
+    background-color: var(--main);
 }
 
 header {
@@ -22,6 +23,10 @@ header {
     padding-top: 20vh;
     font-size: xx-large;
     color: white;
+}
+
+#countdown {
+    color:var(--link);
 }
 
 
@@ -37,6 +42,19 @@ main {
     left: 50%;
     transform: translate(-50%, -50%);
 } */
+
+/* .feedback {
+    background-color: turquoise;
+} */
+
+.questions, .options { 
+    font-size: xx-large;
+    justify-content: space-between;
+    padding: 5px;
+    border: 2px black;
+    background-color: var(--reg);
+}
+
 
 .quiz_box.activeQuiz, .results.activeResults {
     opacity: 1;
@@ -56,8 +74,12 @@ main {
 
 #StartBtn {
     font-size: 25px;
-    background-color: tan;
-    color: white;
+    background-color: var(--link);
+    color: var(--reg);
     margin-top: 100px;
     border-radius: 5px;
+}
+
+.buttons {
+    font-size: 30px;
 }
