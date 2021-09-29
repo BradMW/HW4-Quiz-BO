@@ -43,15 +43,24 @@ main {
     transform: translate(-50%, -50%);
 } */
 
-/* .feedback {
-    background-color: turquoise;
-} */
+.feedback {
+    /* align-items: center;
+    justify-content: center; */
+    margin: auto;
+    
+    font-style:bold oblique;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    font-size: x-large;
+    width: 600px;
+}
 
 .questions, .options { 
     font-size: xx-large;
-    justify-content: space-between;
-    padding: 5px;
-    border: 2px black;
+    justify-content: space-evenly;
+    width: 600px;
+    margin: auto;
+    border: 3px solid var(--text);
     background-color: var(--reg);
 }
 
