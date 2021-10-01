@@ -13,7 +13,7 @@ var feedbackMsg = document.querySelector(".feedback");
 var numCorrect = 0;
 var length = 4;
 var score = document.getElementById(".points");
-
+let started = false;
 // let numCorrect = document.getElementById(".points");
 
 function showQuestions() {
@@ -43,7 +43,7 @@ restart.addEventListener("click", function(event) {
     // QCounter(number);
     console.log("restartBtn");
 });
-console.log("restartBtn");
+// console.log("restartBtn");
 
 
 quit.addEventListener("click", function(){
@@ -65,7 +65,12 @@ function countdown() {
         } else if (timeLeft === 1) {
             timerEl.textContent = timeLeft + "second remaining";
             timeLeft--;
-        } else {
+        } else if (started === false) {
+            timerEl.textContent = "";
+            clearInterval(timeInterval);
+        }
+        
+        else {
             timerEl.textContent = "";
             clearInterval(timeInterval);
 
@@ -167,6 +172,7 @@ function questionRender() {
                     
 
                  numCorrect++;
+                 console.log(numCorrect);
                 } else if(this) {
                     
                     feedbackMsg.textContent = "wrong answer"
@@ -174,18 +180,38 @@ function questionRender() {
                 } else {
 
                 }
+                if(quesNum < 4) {
+
                 quesNum += 1;
                 options.textContent = "";
                 question.textContent = "";
                 questionRender()
+                } else {
+                    started = false;
+                    options.textContent = "";
+                    question.textContent = "";
+            console.log(numCorrect);
+
+            window.alert(
+                "Congrats on finishing!:\nQuestions Answered Correctly: " + numCorrect
+            );
+                }
+                
+                // window.alert(
+                //     "Stats:\nnumCorrect: " + numCorrect
+                // );
 
         })
        
+        
     }
    
 }
 
 function evaluateAnswer() {
+
+
+
 //     console.log(this.textContent);
 //     quesNum += 1;
 //     options.textContent = "";
@@ -210,15 +236,16 @@ function evaluateAnswer() {
 
 //set up a function for the start button
 StartBtn.addEventListener("click", function(event){
+    started = true;
     console.log(event);
     countdown();
     questionRender()
     // StartBtn.onclick(style.display = "none")
- 
+    // StartBtn.setAttribute(style.display = "none")
     // run a function that renders the questions
 }) 
     
-
+// StartBtn.setAttribute(style.display = "none")
 
 
 //for loop for the options of a question
